@@ -1,11 +1,15 @@
 name: Call a reusable workflow and use its outputs
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
 
 jobs:
   job1:
-    uses: octo-org/example-repo/.github/workflows/called-workflow.yml@v1
+    uses: ./.github/workflows/reusable-workflow.yaml
 
   job2:
     runs-on: ubuntu-latest
